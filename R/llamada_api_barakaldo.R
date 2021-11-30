@@ -38,5 +38,7 @@ llamada_api_url <- function(url){
   peticion <- GET(url_peticion)
   resultado_peticion <- httr::content(peticion, "text")
 
+  resultado_peticion <- toJSON(resultado_peticion)
+
   return(resultado_peticion)
 }
