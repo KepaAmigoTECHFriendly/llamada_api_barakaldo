@@ -34,11 +34,12 @@ llamada_api_url <- function(url){
   # PETICIÓN actos fecha
   # ==============================================================================
 
-  url_peticion <- paste(url,jwt,sep = "")
-  peticion <- GET(url_peticion)
+  url_peticion <- url
+  peticion <- GET(url_peticion,
+                  add_headers("X-JWT-Assertion"=jwt))
   resultado_peticion <- httr::content(peticion, "text")
 
-  resultado_peticion <- toJSON(resultado_peticion)
+  #resultado_peticion <- toJSON(resultado_peticion)
 
   return(resultado_peticion)
 }
